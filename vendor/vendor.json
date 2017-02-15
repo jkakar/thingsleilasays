@@ -1,0 +1,12 @@
+{
+	"comment": "",
+    "heroku": {
+        "goVersion": "go1.7",
+        "install": [
+            "./..."
+        ]
+    },
+	"ignore": "test",
+	"package": [],
+	"rootPath": "github.com/jkakar/thingsleilasays"
+}
