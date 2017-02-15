@@ -45,6 +45,12 @@
 			"revisionTime": "2017-01-11T10:11:55Z"
 		},
 		{
+			"checksumSHA1": "veqG9LMm259hz95gY5xDx3QEcBE=",
+			"path": "github.com/joeshaw/envdecode",
+			"revision": "32118ea5f56d5358408e78d150be1843a695e35c",
+			"revisionTime": "2016-06-02T13:47:01Z"
+		},
+		{
 			"checksumSHA1": "Y+HGqEkYM15ir+J93MEaHdyFy0c=",
 			"path": "golang.org/x/net/context",
 			"revision": "61557ac0112b576429a0df080e1c2cef5dfbb642",
