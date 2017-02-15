@@ -1,12 +1,43 @@
 {
 	"comment": "",
-    "heroku": {
-        "goVersion": "go1.7",
-        "install": [
-            "./..."
-        ]
-    },
+	"heroku": {
+		"goVersion": "go1.7",
+		"install": [
+			"./..."
+		]
+	},
 	"ignore": "test",
-	"package": [],
+	"package": [
+		{
+			"checksumSHA1": "SPQcWDUN+wcTThipcR9EzX4t3E8=",
+			"path": "github.com/cenkalti/backoff",
+			"revision": "b02f2bbce11d7ea6b97f282ef1771b0fe2f65ef3",
+			"revisionTime": "2016-10-20T19:44:10Z"
+		},
+		{
+			"checksumSHA1": "26A5IY12P8NmXEkirKO9v1U+HGI=",
+			"path": "github.com/dghubble/go-twitter",
+			"revision": "465b6dffc281c4970d47adceb0c08535f76f40b8",
+			"revisionTime": "2017-02-13T08:32:11Z"
+		},
+		{
+			"checksumSHA1": "lN9sQI8L7r1K1rv/yIPS4ORsPBQ=",
+			"path": "github.com/dghubble/go-twitter/twitter",
+			"revision": "465b6dffc281c4970d47adceb0c08535f76f40b8",
+			"revisionTime": "2017-02-13T08:32:11Z"
+		},
+		{
+			"checksumSHA1": "BsoROpVGqRTsVkKPperv5VDv+lE=",
+			"path": "github.com/dghubble/sling",
+			"revision": "eb56e89ac5088bebb12eef3cb4b293300f43608b",
+			"revisionTime": "2016-12-18T11:07:05Z"
+		},
+		{
+			"checksumSHA1": "p3IB18uJRs4dL2K5yx24MrLYE9A=",
+			"path": "github.com/google/go-querystring/query",
+			"revision": "53e6ce116135b80d037921a7fdd5138cf32d7a8a",
+			"revisionTime": "2017-01-11T10:11:55Z"
+		}
+	],
 	"rootPath": "github.com/jkakar/thingsleilasays"
 }
