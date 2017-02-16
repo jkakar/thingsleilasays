@@ -43,12 +43,15 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 	info, err := os.Stat(fp)
 	if err != nil {
 		if os.IsNotExist(err) {
+			log.Println(fp)
+			log.Println(err.Error())
 			http.NotFound(w, r)
 			return
 		}
 	}
 
 	if info.IsDir() {
+		log.Println(fp)
 		http.NotFound(w, r)
 		return
 	}
