@@ -27,6 +27,6 @@ func main() {
 	}
 
 	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/", fs)
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	http.ListenAndServe(fmt.Sprintf(":%d", cfg.Port), nil)
 }
