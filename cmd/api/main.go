@@ -32,6 +32,9 @@ type Page struct {
 
 func serveTemplate(w http.ResponseWriter, r *http.Request) {
 	fp := filepath.Join("templates", filepath.Clean(r.URL.Path))
+	if fp == "templates" {
+		fp = "templates/index.html"
+	}
 
 	tweets := make([]twitter.Tweet, 0)
 	json.Unmarshal([]byte(tweetsJSON), &tweets)
