@@ -33,7 +33,7 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 	fp := filepath.Join("templates", filepath.Clean(r.URL.Path))
 
 	tweets := make([]twitter.Tweet, 0)
-	json.Unmarshal(tweetsJSON, &[]byte(tweets))
+	json.Unmarshal([]byte(tweetsJSON), &tweets)
 	page := &Page{
 		Title:  "Things Leila says",
 		Tweets: tweets,
