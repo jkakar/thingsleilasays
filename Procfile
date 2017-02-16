@@ -1,2 +1,2 @@
-web=bin/api
-fetch=bin/fetch
+web: bin/api
+fetch: bin/fetch
