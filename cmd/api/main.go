@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/joeshaw/envdecode"
@@ -39,7 +40,7 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 	tweets := make([]twitter.Tweet, 0)
 	json.Unmarshal([]byte(tweetsJSON), &tweets)
 	page := &Page{
-		Title:  "Things Leila says",
+		Title:  "Things Leila says…",
 		Tweets: tweets,
 	}
 
@@ -59,7 +60,13 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl, err := template.ParseFiles(fp)
+	funcMap := template.FuncMap{
+		"formatDate": func(date string) string {
+			return strings.Join(strings.Split(date, " ")[:3], " ")
+		},
+	}
+
+	tmpl, err := template.New("index.html").Funcs(funcMap).ParseFiles(fp)
 	if err != nil {
 		log.Println(err.Error())
 		http.Error(w, http.StatusText(500), 500)
