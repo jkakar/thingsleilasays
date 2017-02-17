@@ -37,6 +37,19 @@ func newTwitterClient(consumerKey, consumerSecret, accessToken, accessSecret str
 	return twitter.NewClient(httpClient)
 }
 
+func fetchTweets(client *twitter.Client, username string, limit int) ([]twitter.Tweet, error) {
+	params := &twitter.UserTimelineParams{
+		ScreenName: cfg.Username,
+		Count:      cfg.Twitter.TweetLimit,
+	}
+	tweets, resp, err := client.Timelines.UserTimeline(params)
+	if err != nil {
+		return nil, err
+	}
+	resp.Body.Close()
+	return tweets, nil
+}
+
 func main() {
 	var cfg config
 	if err := envdecode.Decode(&cfg); err != nil {
@@ -44,15 +57,7 @@ func main() {
 	}
 
 	client := newTwitterClient(cfg.Twitter.ConsumerKey, cfg.Twitter.ConsumerSecret, cfg.Twitter.AccessToken, cfg.Twitter.AccessSecret)
-	params := &twitter.UserTimelineParams{
-		ScreenName: cfg.Username,
-		Count:      cfg.Twitter.TweetLimit,
-	}
-	tweets, resp, err := client.Timelines.UserTimeline(params)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer resp.Body.Close()
+	tweets, err := fetchTweets(client, cfg.Username, cfg.Twitter.TweetLimit)
 	data, err := json.Marshal(tweets)
 	if err != nil {
 		log.Fatal(err)
